@@ -1,0 +1,127 @@
+.job-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.job-card:hover {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.company-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.position {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.status-badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.job-info {
+  font-size: 0.875rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+  color: #64748b;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 1rem 0;
+  line-height: 1.55;
+}
+
+.job-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.job-card-actions .btn {
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.job-card-actions .btn-edit {
+  flex: 1;
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.job-card-actions .btn-edit:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.job-card-actions .btn-danger {
+  background-color: #b91c1c;
+  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.job-card-actions .btn-danger:hover {
+  background-color: #991b1b;
+  color: #ffffff;
+  filter: brightness(1.05);
+}
+
+/* Square icon-only delete button – high contrast */
+.btn-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.btn-icon .icon-trash {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
+  color: #ffffff;
+  stroke: #ffffff;
+  fill: none;
+}
