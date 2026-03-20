@@ -2,7 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './JobCard.css'
 
-const JobCard = ({ job, onDelete }) => {
+const STATUSES = ['applied', 'interview', 'offer', 'rejected', 'accepted']
+
+const JobCard = ({ job, onDelete, onUpdateStatus, isStatusUpdating }) => {
   const navigate = useNavigate()
 
   const handleDeleteClick = () => {
@@ -36,12 +38,20 @@ const JobCard = ({ job, onDelete }) => {
           <h3 className="company-name">{job.company_name}</h3>
           <p className="position">{job.position}</p>
         </div>
-        <span
-          className="status-badge"
+        <select
+          className="status-select"
           style={{ backgroundColor: getStatusColor(job.status) }}
+          value={job.status || 'applied'}
+          onChange={(e) => onUpdateStatus(job.id, e.target.value)}
+          disabled={isStatusUpdating}
+          aria-label={`Update status for ${job.company_name}`}
         >
-          {job.status}
-        </span>
+          {STATUSES.map((status) => (
+            <option key={status} value={status}>
+              {status.charAt(0).toUpperCase() + status.slice(1)}
+            </option>
+          ))}
+        </select>
       </div>
 
       {job.location && (

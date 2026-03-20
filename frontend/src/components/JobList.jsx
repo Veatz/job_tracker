@@ -10,6 +10,7 @@ const JobList = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [filter, setFilter] = useState('all')
+  const [updatingStatusId, setUpdatingStatusId] = useState(null)
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, jobId: null, jobTitle: '' })
   const navigate = useNavigate()
 
@@ -55,6 +56,20 @@ const JobList = () => {
 
   const handleDeleteCancel = () => {
     setDeleteModal({ isOpen: false, jobId: null, jobTitle: '' })
+  }
+
+  const handleUpdateStatus = async (id, newStatus) => {
+    try {
+      setError(null)
+      setUpdatingStatusId(id)
+      await jobService.update(id, { status: newStatus })
+      await loadJobs()
+    } catch (err) {
+      setError('Failed to update status. Please try again.')
+      console.error(err)
+    } finally {
+      setUpdatingStatusId(null)
+    }
   }
 
   const filteredJobs = filter === 'all'
@@ -118,6 +133,8 @@ const JobList = () => {
               key={job.id}
               job={job}
               onDelete={handleDeleteClick}
+              onUpdateStatus={handleUpdateStatus}
+              isStatusUpdating={updatingStatusId === job.id}
             />
           ))}
         </div>
